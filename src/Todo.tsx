@@ -12,13 +12,18 @@ export const ToDo = () => {
         console.log(text)
         console.log(list)
     }
+    const removeValue = (index:number) => {
+        console.log(index)
+        list.splice(index, 1)
+        setList([...list])
+    }
     return ( 
         <div>
             <Header></Header>
             <Content>
                 <List>
                     {
-                        list.map((item, index) => (<Task isDone={false} isEdit={false} id={index} text={item} key={index}></Task>))
+                        list.map((item, index) => (<Task onRemove={text => removeValue(text)} isDone={false} isEdit={false} id={index} text={item} key={index}></Task>))
                     }
                     {/* <Task text={'hello world'} isDone={false} isEdit={false} id='0'></Task> */}
                 </List>
